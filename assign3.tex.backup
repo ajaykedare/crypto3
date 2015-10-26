@@ -129,75 +129,22 @@ The need to support export cipher suites led to some technical challenges. Since
 
 \subsubsection{Desribe a “typical” attack scenario.}
 \indent \indent FREAK attack basically is a  Man in the Middle(MITM) attack that uses export cipher suite. The attack can be done as follows: \\
-\begin{enumerate}
- \item The client asks the server for the standard 'RSA' ciphersuite.
- \item The MITM attacker changes this message and asks for 'export RSA'.
- \item The server then responds with a 512-bit export RSA key, signed with its long-term key.
- \item The client accepts this weak key due to the bug in OpenSSL implementation.
- \item The attacker factors the RSA modulus to recover the corresponding RSA decryption key.
- \item When the client encrypts the 'pre-master secret' to the server, the attacker can now decrypt it to recover the 'master secret'.
- \item From here on, the attacker sees plaintext and can inject anything it wants.
-\end{enumerate}
+1. The client asks the server for the standard 'RSA' ciphersuite.
+2. The MITM attacker changes this message and asks for 'export RSA'.
+3. The server then responds with a 512-bit export RSA key, signed with its long-term key.
+4. The client accepts this weak key due to the bug in OpenSSL implementation.
+5. The attacker factors the RSA modulus to recover the corresponding RSA decryption key.
+6. When the client encrypts the 'pre-master secret' to the server, the attacker can now decrypt it to recover the 'master secret'.
+7. From here on out, the attacker sees plaintext and can inject anything it wants.
 
 \subsubsection{What is the vulnerability behind the attack?}
-\indent \indent The vulnerability behind this attack is that export cipher suites are still supported by some of the servers and they can be easily decrypted.
+\indent \indent The vulnerability behind this attack is that export cipher suites are still supported by some of the servers and they can be easily decrypted
 
 \subsubsection{How can the attack be defended against?}
 \indent \indent The server should disable support for any export suites. Administrators should be encouraged to disable all insecure ciphers and enable suites which support perfect forward secrecy i.e if a session key is revealed it should not affect the future messages and they cannot be decrypted.
 
 \section{Buffer overflow vulnerability}
 
-\subsection{On linux machine(x86\_64)}
-  We tried buffer overflow attack using  x=56 and y=7 and it worked.\\
-        
-  \noindent 1. We disabled canary variable and make Stack executable and compiled program using:\\
-  \textbf{\tt gcc -g -fno-stack-protector -z execstack -o prog prog.c}\\\\
-  2. Now we started to debug the program using \textbf{gdb}.\\
-    We added a break point in function \textbf{A( )} and analysed the program.\\
-    We checked the address of local varibales of function \textbf{A( )}.\\
-  
-  \begin{figure}[htb]
-    \begin{center}
-	\includegraphics[width=8cm,height=5cm]{bo.png}
-	\caption{Address of local varibales.}
-    \end{center}
-  \end{figure}
-      After getting the address of local variables we 'disassemble' the main function
-      and checked the return address of function \textbf{A( )}.\\
-      
-       
-   
-   \begin{figure}[htb]
-      \begin{center}
-		\includegraphics[width=8cm,height=4cm]{bo1.png}
-	\caption{Return address of function A()}
-      \end{center}      
-    \end{figure}
-        
-
-    3. Using the command \textbf{tt x/16xw Address} in \textbf{gdb} we can analyze the contents of given address and
-    the next 16 words of this address(word=4 bytes).\\
-    So we analyze the memory address of 'buf2' variable which was obtained in previous steps.\\
-    
-     
-        \begin{figure}[H]
-	  \begin{center}
-		\includegraphics[width=8cm,height=2cm]{bo2.png}
-	\caption{Contents of memory address}
-	 \end{center}
-	\end{figure}
-	
-		
-	All the above contents are in stack of function \textbf{A( )}.\\
-	We can see the return address of \textbf{A( )} is stored in the stack and we have to change this return address.\\ 
-        Since,return address is stored at the 14th word(starting from address of buf2),which is 56 bytes(14*4 bytes=56 bytes)
-        away from address of \textbf{buf2}.\\
-        So,\\
-          we have \textbf{ptr=buf2 + 56};\\
-          Now \textbf{ptr} is pointing to return addres of \textbf{A( )}.\\
-          As we can see from the assembly code of main function,next address after the return address of \textbf{A()} is \textbf{0x400587}.\\
-          So we change the return address by adding \textbf{7} to the content of \textbf{*ptr} variable.\\
-          Finally,the output of program will be \textbf{1} not \textbf{2}(as a result of buffer overflow attack).\\
 
 \end{document}
 
