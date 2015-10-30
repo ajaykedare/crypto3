@@ -55,12 +55,12 @@ Needham-Schroeder protocol? Show your new design.}
  A verifies the nonce R1 and forwards the ticket recieved from KDC to B along with new timestamp $T_a$ encryted with session key $K_{ab}$. \\ \\ 
  $B \rightarrow A: \{T_a+1,Tb\}_{K_{ab}}$ \\
  B decrypts the ticket, and collect the session key $K_{ab}$ and also verify that the timetamp from server and validity mentioned is correct or not.
- If it is not then B can reject this message. B again sends his timestamp to and verifies the timestamp challenge of A\\ \\
+ If it is not then B can reject this message. B again sends his timestamp to A and verifies the timestamp challenge of A\\ \\
  $A \rightarrow B: \{T_b+1\}_{K_{ab}}$ \\
  A now decrypts the message with the session key $K_{ab}$ and sends verification for B's timestamp. \\ \\
  
  Hence any replay attack is not possible since B is verifying the the timestamp of B's ticket generation and its validity.
- Also while sending the message to A, B is veryfying the A's timestamp and also sending back the B's timestamp to be verified by A.
+ Also while sending the message to A, B is veryfying the A's timestamp and sending back the B's timestamp to be verified by A.
 
  
  
@@ -78,7 +78,8 @@ How can the attack be defended against?}
 
 \indent \indent BEAST Attack which stands for {\it Browser Exploit Against SSL/TLS Attack} is based on "chosen plain text attack". TLS 1.0 uses CBC (Cipher Block Chaining) mode of operation for encryption. CBC modes makes use of previous cipher text block  $C_{i-1}$ as the initialization vector (IV) for encrypting the next plain text block $P_{i}$.
 
-If an attacker is sniffing the encrypted data sent by the browser, then he/she will be able to obtain the IV that will be used for the next message encyption. So if the attacker can make a guess at the session cookie ($P_{i}$) and see if this new  cipher text ($C'_{i-1}$) matches with original cipher text ($C_{i}$) then attacker has made a correct guess at the session cookie.
+If an attacker is sniffing the encrypted data sent by the browser, then he/she will be able to obtain the IV that will be used for the next message encyption. So if the attacker can make a guess at the session cookie ($P_{i}$) and see if this new  cipher text ($C'_{i}$)
+matches with original cipher text ($C_{i}$) then attacker has made a correct guess at the session cookie.
 
 \subsubsection{Desribe a “typical” attack scenario.}
 \indent \indent Considering that attacker has identified a  block of ciphertext Ci that he/she wants to decrypt, becuase it contains the session cookie. Now as he already sinffed the network so he already has Ci-1 with him.
@@ -117,7 +118,7 @@ The heartbeat message consists of a payload, typically a text string, along with
 
 
 \subsubsection{How can the attack be defended against?}
-\indent \indent The attack can be defended by doing proper bound checking. Also if the primary key is compromised it should be revoked and new primary key should be used, else the attacker may decrypt the message or can also change the message.
+\indent \indent The attack can be defended by doing proper bound checking. Also if the private key is compromised it should be revoked and new private key should be used, else the attacker may decrypt the message or can also change the message.
 
 \subsection{Freak}
 \indent \indent FREAK (Factoring RSA Export Keys) is a security exploit of a cryptographic weakness in the SSL/TLS protocols.The vulnerability was introduced during 1990's, when the US government banned selling strong cryptographic software overseas, unless it used export cipher suites which involved encryption keys no longer than 512-bits so it can be decrypted by NSA.
@@ -146,9 +147,8 @@ The need to support export cipher suites led to some technical challenges. Since
 \indent \indent The server should disable support for any export suites. Administrators should be encouraged to disable all insecure ciphers and enable suites which support perfect forward secrecy i.e if a session key is revealed it should not affect the future messages and they cannot be decrypted.
 
 \section{Buffer overflow vulnerability}
-
-\subsection{On linux machine(x86\_64)}
-  We tried buffer overflow attack using  x=56 and y=7 and it worked.\\
+  \subsection{On linux machine(x86\_64)}
+  We completed buffer overflow attack using  x=56 and y=7.\\
         
   \noindent 1. We disabled canary variable and make Stack executable and compiled program using:\\
   \textbf{\tt gcc -g -fno-stack-protector -z execstack -o prog prog.c}\\\\
@@ -157,47 +157,130 @@ The need to support export cipher suites led to some technical challenges. Since
     We checked the address of local varibales of function \textbf{A( )}.\\
   
   \begin{figure}[htb]
-    \begin{center}
-	\includegraphics[width=8cm,height=5cm]{bo.png}
+   \begin{center}
+		\includegraphics[width=8cm,height=5cm]{bo.png}
 	\caption{Address of local varibales.}
-    \end{center}
-  \end{figure}
+	 \end{center}
+	\end{figure}
       After getting the address of local variables we 'disassemble' the main function
       and checked the return address of function \textbf{A( )}.\\
       
        
    
    \begin{figure}[htb]
-      \begin{center}
+     \begin{center}
 		\includegraphics[width=8cm,height=4cm]{bo1.png}
 	\caption{Return address of function A()}
-      \end{center}      
-    \end{figure}
-        
-
-    3. Using the command \textbf{tt x/16xw Address} in \textbf{gdb} we can analyze the contents of given address and
-    the next 16 words of this address(word=4 bytes).\\
-    So we analyze the memory address of 'buf2' variable which was obtained in previous steps.\\
-    
-     
-        \begin{figure}[H]
-	  \begin{center}
-		\includegraphics[width=8cm,height=2cm]{bo2.png}
-	\caption{Contents of memory address}
 	 \end{center}
 	\end{figure}
-	
-		
-	All the above contents are in stack of function \textbf{A( )}.\\
-	We can see the return address of \textbf{A( )} is stored in the stack and we have to change this return address.\\ 
-        Since,return address is stored at the 14th word(starting from address of buf2),which is 56 bytes(14*4 bytes=56 bytes)
-        away from address of \textbf{buf2}.\\
-        So,\\
-          we have \textbf{ptr=buf2 + 56};\\
-          Now \textbf{ptr} is pointing to return addres of \textbf{A( )}.\\
-          As we can see from the assembly code of main function,next address after the return address of \textbf{A()} is \textbf{0x400587}.\\
+        
+
+    3.Stack layout:    
+         \begin{figure}[H]
+            \begin{center}
+		\includegraphics[width=8cm,height=8cm]{stack.png}
+	\caption{Stack frame layout}
+	  \end{center}
+	\end{figure}
+        
+        As we can see in stack frame return address is stotred in (base-pointer+8) address.\\
+        We check the content of registers and get the address of base-pointer stored in register \textbf{rbp}.\\
+         
+         \begin{figure}[H]
+          \begin{center}
+		\includegraphics[width=8cm,height=8cm]{reg.png}
+	\caption{Base-pointer address}
+	\end{center}
+	\end{figure}
+         
+         (base-pointer address + 8) will give the location where return address is stored.\\
+          
+           \begin{figure}[H]
+             \begin{center}
+		\includegraphics[width=8cm,height=2cm]{ret.png}
+	\caption{Location of return address in stack-frame}
+	\end{center}
+	\end{figure}
+         
+         Now,we have the location of \textbf{return address} and address of buf2.\\
+         We calculated the differnce between these two
+         addresses,which will give value of \textbf{x=56.}\\
+         As we can see from the assembly code of main function,next address after the return address of \textbf{A()} is \textbf{0x400587}.\\
           So we change the return address by adding \textbf{7} to the content of \textbf{*ptr} variable.\\
-          Finally,the output of program will be \textbf{1} not \textbf{2}(as a result of buffer overflow attack).\\
+          Therefore value of \textbf{y=7.}\\
+          
+          Similarly when canary varibale is enabled,we get different values \textbf{x=40 and y=7}.\\
+          In this case values are different because compiler does some optimization on allocation of local variables\\
+           in the stack and compiler allocate memory in different manner and also canary variable is also in the stack.\\
+           
+           \begin{figure}[H]
+             \begin{center}
+		\includegraphics[width=8cm,height=8cm]{can.png}
+	\caption{Canary varibale intialization and checking for buffer-overflow attack}
+	\end{center}
+	\end{figure}
+         
+ \subsection{On Windows(x86\_64)}
+  \subsubsection{Canary variable is enabled}
+  
+  1. On windows machine stack word size is 4 bytes.
+      
+      \begin{figure}[H]
+	\begin{center}
+	 
+
+ \includegraphics[width=8cm,height=8cm]{buf2addr.JPG}
+	\caption{Address of buf2}
+		\end{center}
+	\end{figure}
+  2. We now check for return address of function A.
+       
+       
+      \begin{figure}[H]
+       \begin{center}
+		\includegraphics[width=8cm,height=8cm]{disassMain.JPG}
+	\caption{Return address of function A}
+	\end{center}
+	\end{figure}
+  3. Checking contents of register to get address of base-pointer of stack-frame of function A.\\
+   
+      \begin{figure}[H]
+           \begin{center}
+		\includegraphics[width=8cm,height=8cm]{infoReg.JPG}
+	\caption{Address of base-pointer}
+	\end{center}
+	\end{figure}
+     
+     (base-pointer +4) will give the location of return Address stored in stack frame.\\
+     So,\textbf{ox28fefc} is the location where return address is stored.\\
+     Therefore value of x=27(differnce between location of return address and address of buf2)\\
+     And value of y=8.\\
+    
+   \subsubsection{Canary variable is disabled}
+   \indent To disable the canary in windows machine we compile our program with command as : \\
+   \textbf{\tt gcc -g -fstack-protector -o prog prog.c}\\\\
+   Similarly with stack-protection on we get \textbf{x=26 and y=8.}\\
+   This is because memory for local variables are allocated differently in presence of canary variable.\\
+    
+    \begin{figure}[H]
+             \begin{center}
+		\includegraphics[width=8cm,height=8cm]{ws.JPG}
+	\caption{Canary varibale intialization and checking for buffer-overflow attack}
+	\end{center}
+	\end{figure}
+  
+  \begin{table}[H]
+\centering
+\caption{Values of x and y}
+\label{my-label}
+\begin{tabular}{|l|l|l|}
+\hline
+\begin{tabular}[c]{@{}l@{}}linux(x\_86\_64)\\ canary disabled\end{tabular}   & x=56 & y=7 \\ \hline
+\begin{tabular}[c]{@{}l@{}}linux(x\_86\_64)\\ canary enabled\end{tabular}    & x=40 & y=7 \\ \hline
+\begin{tabular}[c]{@{}l@{}}windows(x\_86\_64)\\ canary disabled\end{tabular} & x=27 & y=8 \\ \hline
+\begin{tabular}[c]{@{}l@{}}windows(x\_86\_64)\\ canary enabled\end{tabular}  & x=26 & y=8 \\ \hline
+\end{tabular}
+\end{table}
 
 \end{document}
 
