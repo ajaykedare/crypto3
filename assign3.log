@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.16)  30 OCT 2015 16:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.16)  30 OCT 2015 19:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -316,18 +316,18 @@ Now handling font encoding U ...
 )) (./assign3.aux)
 \openout1 = `assign3.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -420,211 +420,244 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 28.
+(Font)              <12> on input line 30.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 28.
+(Font)              <8> on input line 30.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 28.
+(Font)              <6> on input line 30.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 38.
+(Font)              <7> on input line 41.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 38.
+(Font)              <5> on input line 41.
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--48
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 49--61
+Underfull \hbox (badness 10000) in paragraph at lines 48--50
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--61
+Underfull \hbox (badness 10000) in paragraph at lines 48--50
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--61
+Underfull \hbox (badness 10000) in paragraph at lines 51--61
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--61
+Underfull \hbox (badness 10000) in paragraph at lines 51--61
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--61
+Underfull \hbox (badness 10000) in paragraph at lines 51--61
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--61
+Underfull \hbox (badness 10000) in paragraph at lines 51--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--77
 
  []
 
 [2
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 85--89
+Underfull \hbox (badness 10000) in paragraph at lines 79--89
 
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--89
 
  []
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--89
 
  []
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 154.
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--89
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--118
+
+ []
+
+[3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 161--162
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
+
+ []
+
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 183.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 153--158
+Underfull \hbox (badness 10000) in paragraph at lines 182--187
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--158
+Underfull \hbox (badness 10000) in paragraph at lines 182--187
 
  []
 
-<bo.png, id=29, 414.54875pt x 312.16624pt>
+[5] <bo.png, id=32, 414.54875pt x 312.16624pt>
 File: bo.png Graphic file (type png)
  <use bo.png>
-Package pdftex.def Info: bo.png used on input line 161.
+Package pdftex.def Info: bo.png used on input line 190.
 (pdftex.def)             Requested size: 227.61665pt x 142.2645pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--167
+Underfull \hbox (badness 10000) in paragraph at lines 194--196
 
  []
 
-<bo1.png, id=30, 562.1pt x 334.24875pt>
+<bo1.png, id=33, 562.1pt x 334.24875pt>
 File: bo1.png Graphic file (type png)
  <use bo1.png>
-Package pdftex.def Info: bo1.png used on input line 172.
+Package pdftex.def Info: bo1.png used on input line 201.
 (pdftex.def)             Requested size: 227.62352pt x 113.81137pt.
- [5 <./bo.png>]
-<stack.png, id=36, 443.6575pt x 338.26375pt>
+
+<stack.png, id=35, 443.6575pt x 338.26375pt>
 File: stack.png Graphic file (type png)
  <use stack.png>
-Package pdftex.def Info: stack.png used on input line 181.
+Package pdftex.def Info: stack.png used on input line 210.
 (pdftex.def)             Requested size: 227.61626pt x 227.62653pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--188
+ [6 <./bo.png> <./bo1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 215--217
 
  []
 
-<reg.png, id=37, 443.6575pt x 280.04625pt>
+<reg.png, id=40, 443.6575pt x 280.04625pt>
 File: reg.png Graphic file (type png)
  <use reg.png>
-Package pdftex.def Info: reg.png used on input line 191.
+Package pdftex.def Info: reg.png used on input line 220.
 (pdftex.def)             Requested size: 227.61626pt x 227.63101pt.
- [6 <./bo1.png> <./stack.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
 
  []
 
-<ret.png, id=42, 260.975pt x 61.22874pt>
+<ret.png, id=41, 260.975pt x 61.22874pt>
 File: ret.png Graphic file (type png)
  <use ret.png>
-Package pdftex.def Info: ret.png used on input line 200.
+Package pdftex.def Info: ret.png used on input line 229.
 (pdftex.def)             Requested size: 227.62383pt x 56.90662pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--211
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 212--215
+ [7 <./stack.png> <./reg.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 234--240
 
  []
 
-<can.png, id=43, 652.4375pt x 570.13pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--244
+
+ []
+
+<can.png, id=47, 652.4375pt x 570.13pt>
 File: can.png Graphic file (type png)
  <use can.png>
-Package pdftex.def Info: can.png used on input line 218.
+Package pdftex.def Info: can.png used on input line 247.
 (pdftex.def)             Requested size: 227.61984pt x 227.62169pt.
- [7 <./reg.png> <./ret.png>] <buf2addr.JPG, id=50, 671.50874pt x 339.2675pt>
+
+<buf2addr.JPG, id=48, 671.50874pt x 339.2675pt>
 File: buf2addr.JPG Graphic file (type jpg)
  <use buf2addr.JPG>
-Package pdftex.def Info: buf2addr.JPG used on input line 232.
+Package pdftex.def Info: buf2addr.JPG used on input line 261.
 (pdftex.def)             Requested size: 227.62344pt x 227.61864pt.
-
-<disassMain.JPG, id=51, 669.50125pt x 340.27126pt>
+ [8 <./ret.png> <./can.png>] <disassMain.JPG, id=54, 669.50125pt x 340.27126pt>
 File: disassMain.JPG Graphic file (type jpg)
- <use disassMain.JPG>
-Package pdftex.def Info: disassMain.JPG used on input line 241.
+
+<use disassMain.JPG>
+Package pdftex.def Info: disassMain.JPG used on input line 270.
 (pdftex.def)             Requested size: 227.6172pt x 227.6223pt.
 
-[8 <./can.png> <./buf2addr.JPG>]
-Underfull \hbox (badness 10000) in paragraph at lines 245--246
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
 
  []
 
-<infoReg.JPG, id=56, 358.33875pt x 225.84375pt>
+<infoReg.JPG, id=55, 358.33875pt x 225.84375pt>
 File: infoReg.JPG Graphic file (type jpg)
  <use infoReg.JPG>
-Package pdftex.def Info: infoReg.JPG used on input line 249.
+Package pdftex.def Info: infoReg.JPG used on input line 278.
 (pdftex.def)             Requested size: 227.62459pt x 227.63515pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 254--258
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 260--264
+ [9 <./buf2addr.JPG> <./disassMain.JPG>]
+Underfull \hbox (badness 10000) in paragraph at lines 283--287
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 260--264
+Underfull \hbox (badness 10000) in paragraph at lines 289--293
 
  []
 
-[9 <./disassMain.JPG> <./infoReg.JPG>]
-<ws.JPG, id=60, 531.9875pt x 372.39125pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--293
+
+ []
+
+<ws.JPG, id=59, 531.9875pt x 372.39125pt>
 File: ws.JPG Graphic file (type jpg)
  <use ws.JPG>
-Package pdftex.def Info: ws.JPG used on input line 267.
+Package pdftex.def Info: ws.JPG used on input line 296.
 (pdftex.def)             Requested size: 227.62184pt x 227.62994pt.
- [10 <./ws.JPG>]
-(./assign3.aux) ) 
+ [10 <./infoReg.JPG>]
+[11 <./ws.JPG>] (./assign3.aux) ) 
 Here is how much of TeX's memory you used:
  2520 strings out of 495028
  33717 string characters out of 6181497
- 98473 words of memory out of 5000000
+ 98472 words of memory out of 5000000
  5686 multiletter control sequences out of 15000+600000
  12765 words of font info for 32 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,13n,32p,602b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/ajay/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.6
-00pk> </home/ajay/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home
-/ajay/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/ajay/.texmf
--var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/ajay/.texmf-var/fonts/p
-k/ljfour/jknappen/ec/ecbx1440.600pk> </home/ajay/.texmf-var/fonts/pk/ljfour/jkn
-appen/ec/ecrm1000.600pk> </home/ajay/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecr
-m1200.600pk> </home/ajay/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy7.pfb>
-Output written on assign3.pdf (10 pages, 543745 bytes).
+ 38i,13n,32p,588b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/ajay/.texmf-var/fonts/pk/ljfour/jknapp
+en/ec/ectt1000.600pk> </home/ajay/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti10
+00.600pk> </home/ajay/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </
+home/ajay/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/ajay/.t
+exmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/ajay/.texmf-var/fon
+ts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/ajay/.texmf-var/fonts/pk/ljfour
+/jknappen/ec/ecrm1200.600pk> </home/ajay/.texmf-var/fonts/pk/ljfour/jknappen/ec
+/ecrm1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on assign3.pdf (11 pages, 536676 bytes).
 PDF statistics:
- 416 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
+ 411 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

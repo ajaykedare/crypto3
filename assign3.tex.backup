@@ -35,31 +35,60 @@ number of messages you need to achieve the same functionality provided by the
 Needham-Schroeder protocol? Show your new design.}
 
  \begin{enumerate}
-  \item $A \rightarrow KDC: M,A,B,R1$
-  \item	$KDC \rightarrow A: M,\{T_s,V,K_{ab},B,R1,\{T_s, V, K_{ab},A\}K_{bs}\}K_{as}$
-  \item $A \rightarrow B: \{T_s, V, K_{ab},A\}K_{bs},\{T_a\}K_{ab}$
-  \item $B \rightarrow A: \{T_a+1,Tb\}_{K_{ab}}$
-  \item $A \rightarrow B: \{T_b+1\}_{K_{ab}}$
+  \item $A \rightarrow B: M,A,B,\{N_a,M,A,B \}K_{as}$
+  \item	$B \rightarrow KDC: M,A,B,\{N_a,M,A,B \}K_{as}, \{N_b,M,A,B\}K_{bs}$
+  \item $KDC \rightarrow B: \{M,N_a,K_{a,b}\}K_{as},  \{M,N_b,K_{a,b}\}K_{bs}$
+  \item $B \rightarrow A: \{N_a,K_{a,b}\}K_{as} , \{N_b\}K_{ab}$
+  \item $A \rightarrow B: \{N_b-1\}K_{ab}$
  \end{enumerate} 
  
- \noindent Here, $T_a$ , $T_b$ and $T_s$ are the timestamps. \\ 
- M is session identifier. \\
- V is validity of message. \\
+ \noindent Here, M is session identifier. \\ 
+ \indent $N_a and N_b$ are the nonces. \\ \\
+ 
+ \noindent $A \rightarrow B: M,A,B,\{N_a,M,A,B \}K_{as}$ \\
+ A sends encrypted data to KDC which includes nonce,session identifier and identities of A \& B. A also sends this in plaintext to B. \\ \\ 
+ $B \rightarrow KDC: M,A,B,\{N_a,M,A,B \}K_{as}, \{N_b,M,A,B\}K_{bs}$ \\ 
+ B now communicates with KDC and forwards A's encypted data along with encrypted data from B which includes B's nonce, session idenitifier and identities of A \& B. \\ \\
+ $KDC \rightarrow B: \{M,N_a,K_{a,b}\}K_{as},  \{M,N_b,K_{a,b}\}K_{bs}$\\
+ KDC, replies back with session key $K_{ab}$ for both A \& B which is encrypted with shared keys of A \& B with KDC. \\ \\
+ $B \rightarrow A: \{N_a,K_{a,b}\}K_{as} , \{N_a,N_b\}K_{ab}$ \\
+ B, sends the recived ticket to A which has session key and also nonces encrypted with session key. \\ \\
+ $A \rightarrow B: \{N_b\}K_{ab}$ \\
+ A decrypts the session key from ticket and verifies the nonces by using session key. \\ \\ 
+ 
+ So in this protocol 
+ 
+ 
+ 
+ 
+ This protocol provides key confirmation and entity authentication.\\
+  
+
+\noindent Using timestamp we reduced the number of messages to 4 as below: \\
+ \begin{enumerate}
+  \item $A \rightarrow B: A,N_a$
+  \item	$B \rightarrow KDC: B,N_b,\{A,N_a,T_b\}K_{bs}$
+  \item $KDC \rightarrow A: \{B,N_a,K_{ab},T_b\}K_{as}, \{A,K_{ab},T_b\}K_{bs},N_b$
+  \item $A \rightarrow B: \{A,K_{ab},T_b\}K_{bs}, \{N_b\}K_{ab}$
+ \end{enumerate} 
+ 
+ \noindent Here, $T_b$ is timestamp which specifies the duration for which session is valid. \\ 
+ \indent $N_a and N_b$ are the nonces. \\
+ 
  
  \noindent 
- $A \rightarrow KDC: M,A,B,R1$ \\ First, A sends to KDC, message identifier, and nonce R1 along with "A" and "B".\\ \\
- $KDC \rightarrow A: M,\{T_s,V,K_{ab},B,R1,\{T_s, V, K_{ab},A\}K_{bs}\}K_{as}$\\ Now the key part is when KDC 
- sends the timestamp and validity to A and also includes it in the ticket for B which is encrypted with $K_{bs}$. 
- Ticket, $\{T_s, V, K_{ab},A\}K_{bs}$ contains the actual session key between A and B i.e. $K_{ab}$. \\ \\
- $A \rightarrow B: \{T_s, V, K_{ab},A\}K_{bs},\{T_a\}K_{ab}$ \\ 
- A verifies the nonce R1 and forwards the ticket recieved from KDC to B along with new timestamp $T_a$ encryted with session key $K_{ab}$. \\ \\ 
- $B \rightarrow A: \{T_a+1,Tb\}_{K_{ab}}$ \\
- B decrypts the ticket, and collect the session key $K_{ab}$ and also verify that the timetamp from server and validity mentioned is correct or not.
- If it is not then B can reject this message. B again sends his timestamp to A and verifies the timestamp challenge of A\\ \\
- $A \rightarrow B: \{T_b+1\}_{K_{ab}}$ \\
- A now decrypts the message with the session key $K_{ab}$ and sends verification for B's timestamp. \\ \\
+ $A \rightarrow B: A,N_a$ \\ First, A sends his identification and nonce to B.\\ \\
+ $B \rightarrow KDC: B,N_b,\{A,N_a,T_b\}K_{bs}$\\ B forwards this nonce and A's identification to KDC requesting for the ticket.
+ which is encrypted with $K_{bs}$. B also sends his nonce so that he can verify when he recives the actual session key. 
+ A timestamp is added that decides the duration of session. \\ \\
+ $KDC \rightarrow A: \{B,N_a,K_{ab},T_b\}K_{as}, \{A,K_{ab},T_b\}K_{bs},N_b$ \\
+ KDC, now generates the session key $K_{ab}$ and forward it to A along with A's nonce, timestamp $T_b$ encrypted with $K_{as}$.
+ It also includes the ticket which has the session key, timestamp and will be forwarded to B. \\ \\
+ $A \rightarrow B: \{A,K_{ab},T_b\}K_{bs}, \{N_b\}K_{ab}$ \\
+ A forwards the ticket to B which has session key,timestamp and enrypts the B's nonce with session key $K_{ab}$ \\
  
- Hence any replay attack is not possible since B is verifying the the timestamp of B's ticket generation and its validity.
+ 
+ Any replay attack is not possible since B is verifying the the timestamp of B's ticket generation and its validity.
  Also while sending the message to A, B is veryfying the A's timestamp and sending back the B's timestamp to be verified by A.
 
  
@@ -204,12 +233,12 @@ The need to support export cipher suites led to some technical challenges. Since
          
          Now,we have the location of \textbf{return address} and address of buf2.\\
          We calculated the differnce between these two
-         addresses,which will give value of x=56.\\
+         addresses,which will give value of \textbf{x=56.}\\
          As we can see from the assembly code of main function,next address after the return address of \textbf{A()} is \textbf{0x400587}.\\
           So we change the return address by adding \textbf{7} to the content of \textbf{*ptr} variable.\\
-          Therefore value of y=7.\\
+          Therefore value of \textbf{y=7.}\\
           
-          Similarly when canary varibale is enabled,we get different values x=40 and y=7.\\
+          Similarly when canary varibale is enabled,we get different values \textbf{x=40 and y=7}.\\
           In this case values are different because compiler does some optimization on allocation of local variables\\
            in the stack and compiler allocate memory in different manner and also canary variable is also in the stack.\\
            
@@ -221,7 +250,8 @@ The need to support export cipher suites led to some technical challenges. Since
 	\end{figure}
          
  \subsection{On Windows(x86\_64)}
-   (Canary variable is enabled):
+  \subsubsection{Canary variable is enabled}
+  
   1. On windows machine stack word size is 4 bytes.
       
       \begin{figure}[H]
@@ -255,8 +285,10 @@ The need to support export cipher suites led to some technical challenges. Since
      Therefore value of x=27(differnce between location of return address and address of buf2)\\
      And value of y=8.\\
     
-   
-   Similarly in windows machine with stack-protection we get x=26 and y=8.\\
+   \subsubsection{Canary variable is disabled}
+   \indent To disable the canary in windows machine we compile our program with command as : \\
+   \textbf{\tt gcc -g -fstack-protector -o prog prog.c}\\\\
+   Similarly with stack-protection on we get \textbf{x=26 and y=8.}\\
    This is because memory for local variables are allocated differently in presence of canary variable.\\
     
     \begin{figure}[H]
